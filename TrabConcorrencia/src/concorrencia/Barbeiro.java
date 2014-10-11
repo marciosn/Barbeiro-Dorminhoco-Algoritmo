@@ -10,20 +10,15 @@ public class Barbeiro extends Thread {
 
 	public void run() {
 		while (cortar) {
-			
 			try {
 				int sleepTime;
-				do{
-					sleepTime = ((int) (Math.random() * 10000));
-				}while(sleepTime < 7000);
-				
+				do {
+					sleepTime = ((int) (Math.random() * 2000));
+				} while (sleepTime < 1000);
 				Thread.sleep(sleepTime);
 				barbearia.cortarCabelo();
 			} catch (Exception e) {
 			}
-
-			System.out.println("Quantidade de Clientes: "+ barbearia.getFilaClientes().size());
-
 		}
 	}
 

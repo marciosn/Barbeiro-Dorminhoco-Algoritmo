@@ -11,22 +11,16 @@ public class Barbearia {
 	private int qtdeClienteAtendidos = 0;
 	private List<Cliente> clientesJaAtendidos = new ArrayList<>();
 
-	public void sentarClienteNaCadeira(Cliente cliente) {
-		clientesNaFila.offer(cliente);
-	}
-
 	public synchronized void cortarCabelo() {
-
-		System.out.println("quantidade clientes esperando para cortar = "+ clientesNaFila.size());
 		try {
 			while (clientesNaFila.size() == 0) {
-				System.out.println("Não tem nenhum cliente esperando, o barbeiri resolveu dormir");
+				System.out.println("Não tem nenhum cliente esperando, o barbeiro resolveu dormir");
 				wait();
 
-				System.out.println("Barbeiro continua seu trabalho...");
+				System.out.println("Barbeiro continua seu trabalho");
 			}
-			System.out.println("Cabelo Cortado...");
-			int tempoCorte = ((int) (Math.random() * 7000));
+			System.out.println("Cortando o cabelo do cliente.....");
+			int tempoCorte = ((int) (Math.random() * 5000));
 			Thread.sleep(tempoCorte);
 			System.out.println("Tempo de atendimento: " + tempoCorte);
 			qtdeClienteAtendidos++;
@@ -43,18 +37,18 @@ public class Barbearia {
 	}
 
 	public synchronized void aguardaVez(Cliente cliente) {
-
 		try {
 			if (!clientesJaAtendidos.contains(cliente)) {
 				if (clientesNaFila.size() < qtdeCadeiras) {
 					clientesJaAtendidos.add(cliente);
-					sentarClienteNaCadeira(cliente);
+					clientesNaFila.offer(cliente);
+					System.out.println("Quantidade clientes esperando para cortar = "+ clientesNaFila.size());
 				} else {
 					System.out.println("Não existem cadeiras disponiveis, o cliente resolveu esperar um pouco");
 					Cliente.sleep((int) (Math.random() * 3000));
 				}
-			}else
-				System.out.println("O cliente ja foi atendido e nao voltara para a fila");
+			}/*else
+				System.out.println("O cliente ja foi atendido e nao voltara para a fila");*/
 
 			while (clientesNaFila.size() < qtdeCadeiras) {
 				if (dormindo == true) {
@@ -64,7 +58,6 @@ public class Barbearia {
 				}
 				wait();
 			}
-			System.out.println("Existem " + clientesNaFila.size()+ " clientes Aguardando...");
 			notifyAll();
 
 		} catch (InterruptedException e) {

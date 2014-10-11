@@ -9,18 +9,18 @@ public class Main {
 	        Barbeiro barb = new Barbeiro(barbearia);  
 	          
 	     
-	        Cliente cli1 = new Cliente(barbearia, "joao");  
-	        Cliente cli2 = new Cliente(barbearia, "jose");  
-	        Cliente cli3 = new Cliente(barbearia, "flavio");  
-	        Cliente cli4 = new Cliente(barbearia, "pedro");  
-	        Cliente cli5 = new Cliente(barbearia, "marcio");  
-	        Cliente cli6 = new Cliente(barbearia, "souza");  
-	        Cliente cli7 = new Cliente(barbearia, "edu");  
-	        Cliente cli8 = new Cliente(barbearia, "carlos");  
-	        Cliente cli9 = new Cliente(barbearia, "ze");  
-	        Cliente cli10 = new Cliente(barbearia, "maria");  
-	        Cliente cli11 = new Cliente(barbearia, "joana");  
-	        Cliente cli12 = new Cliente(barbearia, "lucia");  
+	        Cliente cli1 = new Cliente(barbearia);  
+	        Cliente cli2 = new Cliente(barbearia);  
+	        Cliente cli3 = new Cliente(barbearia);  
+	        Cliente cli4 = new Cliente(barbearia);  
+	        Cliente cli5 = new Cliente(barbearia);  
+	        Cliente cli6 = new Cliente(barbearia);  
+	        Cliente cli7 = new Cliente(barbearia);  
+	        Cliente cli8 = new Cliente(barbearia);  
+	        Cliente cli9 = new Cliente(barbearia);  
+	        Cliente cli10 = new Cliente(barbearia);  
+	        Cliente cli11 = new Cliente(barbearia);  
+	        Cliente cli12 = new Cliente(barbearia);  
 	          
 	        barb.start();  
 	        cli1.start();  
