@@ -1,9 +1,11 @@
 package concorrencia;
 
+import concorrencia.InterfaceGrafica.BarbeariaTela;
+
 public class Main {
 	
 	 public static void main(String[] args) {  
-         
+			BarbeariaTela bt = new BarbeariaTela();
 	        Barbearia barbearia = new Barbearia();  
 	          
 	        Barbeiro barb = new Barbeiro(barbearia);  
@@ -34,7 +36,13 @@ public class Main {
 	        cli9.start();  
 	        cli10.start();  
 	        cli11.start();  
-	        cli12.start(); 
+	        cli12.start();
+	        
+	        while(true){
+	        	int qtd = barbearia.getFilaClientes().size();
+	        	bt.desenhaCliente(qtd);
+	        	bt.update();
+	        }
 	    }
 
 }

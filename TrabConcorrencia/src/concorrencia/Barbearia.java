@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import concorrencia.InterfaceGrafica.BarbeariaTela;
+
 public class Barbearia {
 	private int qtdeCadeiras = 5;
 	private boolean dormindo = true;
 	private LinkedBlockingQueue<Cliente> clientesNaFila = new LinkedBlockingQueue<>();
 	private int qtdeClienteAtendidos = 0;
 	private List<Cliente> clientesJaAtendidos = new ArrayList<>();
-
+	int tamanhoFila;
 	public synchronized void cortarCabelo() {
 		try {
 			while (clientesNaFila.size() == 0) {
@@ -19,6 +21,10 @@ public class Barbearia {
 
 				System.out.println("Barbeiro continua seu trabalho");
 			}
+			
+			if (clientesNaFila.size() > 0)
+				clientesNaFila.poll();
+			
 			System.out.println("Cortando o cabelo do cliente.....");
 			int tempoCorte = ((int) (Math.random() * 5000));
 			Thread.sleep(tempoCorte);
@@ -26,9 +32,6 @@ public class Barbearia {
 			qtdeClienteAtendidos++;
 			System.out.println("Foram atendidos " + qtdeClienteAtendidos+ " clientes");
 			notifyAll();
-
-			if (clientesNaFila.size() > 0)
-				clientesNaFila.poll();
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -47,8 +50,8 @@ public class Barbearia {
 					System.out.println("Não existem cadeiras disponiveis, o cliente resolveu esperar um pouco");
 					Cliente.sleep((int) (Math.random() * 3000));
 				}
-			}/*else
-				System.out.println("O cliente ja foi atendido e nao voltara para a fila");*/
+			}else
+				System.out.println("O cliente ja foi atendido e nao voltara para a fila");
 
 			while (clientesNaFila.size() < qtdeCadeiras) {
 				if (dormindo == true) {
@@ -59,7 +62,7 @@ public class Barbearia {
 				wait();
 			}
 			notifyAll();
-
+			tamanhoFila = clientesNaFila.size();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -67,5 +70,8 @@ public class Barbearia {
 
 	public LinkedBlockingQueue<Cliente> getFilaClientes() {
 		return clientesNaFila;
+	}
+	public int getTamanho(){
+		return tamanhoFila;
 	}
 }

@@ -13,7 +13,7 @@ public class Barbeiro extends Thread {
 			try {
 				int sleepTime;
 				do {
-					sleepTime = ((int) (Math.random() * 2000));
+					sleepTime = ((int) (Math.random() * 4000));
 				} while (sleepTime < 1000);
 				Thread.sleep(sleepTime);
 				barbearia.cortarCabelo();
