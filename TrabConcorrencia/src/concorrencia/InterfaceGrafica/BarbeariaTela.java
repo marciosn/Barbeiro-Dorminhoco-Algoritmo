@@ -33,6 +33,17 @@ public class BarbeariaTela {
     	case 0:
 	        scene = new Scene();
 	        scene.loadFromFile("scene.scn");
+	        
+	        barbeiro.x = 341;
+	        barbeiro.y = 251;
+	        scene.addOverlay(barbeiro);
+	        barbeiro.draw();
+	        
+	        clienteCortando.x = 265;
+	        clienteCortando.y = 300;
+	        scene.addOverlay(clienteCortando);
+	        clienteCortando.draw();
+	        
 	        scene.draw();
 	        window.update();			
 			break;
@@ -44,6 +55,17 @@ public class BarbeariaTela {
 	        scene.loadFromFile("scene.scn");
 	        scene.addOverlay(cliente1);
 	        cliente1.draw();
+	        
+	        barbeiro.x = 341;
+	        barbeiro.y = 251;
+	        scene.addOverlay(barbeiro);
+	        barbeiro.draw();
+	        
+	        clienteCortando.x = 265;
+	        clienteCortando.y = 300;
+	        scene.addOverlay(clienteCortando);
+	        clienteCortando.draw();
+	        
 	        scene.draw();
 	        window.update();
 			
@@ -59,8 +81,19 @@ public class BarbeariaTela {
 	        scene.draw();
 	        cliente1.draw();
 	        scene.addOverlay(cliente2);
-	        scene.draw();
 	        cliente2.draw();
+	        
+	        barbeiro.x = 341;
+	        barbeiro.y = 251;
+	        scene.addOverlay(barbeiro);
+	        barbeiro.draw();
+	        
+	        clienteCortando.x = 265;
+	        clienteCortando.y = 300;
+	        scene.addOverlay(clienteCortando);
+	        clienteCortando.draw();
+	        
+	        scene.draw();
 	        window.update();
 			break;
 		case 3:
@@ -79,8 +112,19 @@ public class BarbeariaTela {
 	        scene.draw();
 	        cliente2.draw();
 	        scene.addOverlay(cliente3);
-	        scene.draw();
 	        cliente3.draw();
+	        
+	        barbeiro.x = 341;
+	        barbeiro.y = 251;
+	        scene.addOverlay(barbeiro);
+	        barbeiro.draw();
+	        
+	        clienteCortando.x = 265;
+	        clienteCortando.y = 300;
+	        scene.addOverlay(clienteCortando);
+	        clienteCortando.draw();
+	        
+	        scene.draw();
 	        window.update();
 			break;
 		case 4:
@@ -104,8 +148,19 @@ public class BarbeariaTela {
 	        scene.draw();
 	        cliente3.draw();
 	        scene.addOverlay(cliente4);
-	        scene.draw();
 	        cliente4.draw();
+	        
+	        barbeiro.x = 341;
+	        barbeiro.y = 251;
+	        scene.addOverlay(barbeiro);
+	        barbeiro.draw();
+	        
+	        clienteCortando.x = 265;
+	        clienteCortando.y = 300;
+	        scene.addOverlay(clienteCortando);
+	        clienteCortando.draw();
+	        
+	        scene.draw();
 	        window.update();
 			break;
 		case 5:
@@ -134,8 +189,19 @@ public class BarbeariaTela {
 	        scene.draw();
 	        cliente4.draw();
 	        scene.addOverlay(cliente5);
-	        scene.draw();
 	        cliente5.draw();
+	        
+	        barbeiro.x = 341;
+	        barbeiro.y = 251;
+	        scene.addOverlay(barbeiro);
+	        barbeiro.draw();
+	        
+	        clienteCortando.x = 265;
+	        clienteCortando.y = 300;
+	        scene.addOverlay(clienteCortando);
+	        clienteCortando.draw();
+	        
+	        scene.draw();
 	        window.update();
 			break;
 		default:
@@ -193,13 +259,7 @@ public class BarbeariaTela {
     public void update(){
     	window.update();
     }
-    public void hideClientes(){
-    	cliente1.loadImage("vazio.png");
-    }
-    /*public static void main(String[] args) {
-		BarbeariaTela bt = new BarbeariaTela();
-		bt.draw();
-	}*/
+
 	public GameImage getCliente1() {
 		return cliente1;
 	}

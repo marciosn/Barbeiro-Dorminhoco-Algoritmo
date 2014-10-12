@@ -12,18 +12,20 @@ public class Barbearia {
 	private LinkedBlockingQueue<Cliente> clientesNaFila = new LinkedBlockingQueue<>();
 	private int qtdeClienteAtendidos = 0;
 	private List<Cliente> clientesJaAtendidos = new ArrayList<>();
-	int tamanhoFila;
+	boolean cortando = false;
+	
 	public synchronized void cortarCabelo() {
 		try {
 			while (clientesNaFila.size() == 0) {
 				System.out.println("Não tem nenhum cliente esperando, o barbeiro resolveu dormir");
 				wait();
-
 				System.out.println("Barbeiro continua seu trabalho");
 			}
 			
-			if (clientesNaFila.size() > 0)
+			if (clientesNaFila.size() > 0){
 				clientesNaFila.poll();
+				cortando = true;
+			}
 			
 			System.out.println("Cortando o cabelo do cliente.....");
 			int tempoCorte = ((int) (Math.random() * 5000));
@@ -62,7 +64,6 @@ public class Barbearia {
 				wait();
 			}
 			notifyAll();
-			tamanhoFila = clientesNaFila.size();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -71,7 +72,13 @@ public class Barbearia {
 	public LinkedBlockingQueue<Cliente> getFilaClientes() {
 		return clientesNaFila;
 	}
-	public int getTamanho(){
-		return tamanhoFila;
+
+	public boolean isCortando() {
+		return cortando;
 	}
+
+	public boolean isDormindo() {
+		return dormindo;
+	}
+
 }
