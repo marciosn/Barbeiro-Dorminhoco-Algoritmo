@@ -3,9 +3,11 @@ package concorrencia;
 public class Cliente extends Thread {
 	private Barbearia barbearia;
 	private boolean cortar = true;
+	private String nomeCliente;
 
-	public Cliente(Barbearia barbearia) {
+	public Cliente(Barbearia barbearia, String nome) {
 		this.barbearia = barbearia;
+		this.nomeCliente = nome;
 	}
 
 	public void run() {
@@ -13,8 +15,8 @@ public class Cliente extends Thread {
 			try {
 				int sleepTime;
 				do {
-					sleepTime = ((int) (Math.random() * 50000));
-				} while (sleepTime < 100);
+					sleepTime = ((int) (Math.random() * 5000));
+				} while (sleepTime < 1000);
 
 				Thread.sleep(sleepTime);
 				barbearia.aguardaVez(this);
@@ -22,5 +24,8 @@ public class Cliente extends Thread {
 			}
 		}
 
+	}
+	public String nomeCliente(){
+		return nomeCliente;
 	}
 }

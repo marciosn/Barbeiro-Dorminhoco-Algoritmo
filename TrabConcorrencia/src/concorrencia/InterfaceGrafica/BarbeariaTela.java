@@ -1,5 +1,7 @@
 package concorrencia.InterfaceGrafica;
 
+import java.awt.Color;
+
 import jplay.GameImage;
 import jplay.Scene;
 import jplay.Window;
@@ -39,10 +41,10 @@ public class BarbeariaTela {
 	        scene.addOverlay(barbeiro);
 	        barbeiro.draw();
 	        
-	        clienteCortando.x = 265;
+	        /*clienteCortando.x = 265;
 	        clienteCortando.y = 300;
 	        scene.addOverlay(clienteCortando);
-	        clienteCortando.draw();
+	        clienteCortando.draw();*/
 	        
 	        scene.draw();
 	        window.update();			
@@ -208,58 +210,14 @@ public class BarbeariaTela {
 			break;
 		}
     }
-    
-    public void draw(){
-    	
-        scene.draw();  
-        cliente1.x = 431;
-        cliente1.y = 164;
-        
-        cliente2.x = 564;
-        cliente2.y = 181;
-        
-        cliente3.x = 585;
-        cliente3.y = 281;
-        
-        cliente4.x = 624;
-        cliente4.y = 376;
-        
-        cliente5.x = 623;
-        cliente5.y = 470;
-        
-        clienteCortando.x = 265;
-        clienteCortando.y = 300;
-        
-        barbeiro.x = 341;
-        barbeiro.y = 251;
-        
-        scene.addOverlay(cliente1);
-        cliente1.draw();
-        
-        scene.addOverlay(cliente2);
-        cliente2.draw();
-        
-        scene.addOverlay(cliente3);
-        cliente3.draw();
-        
-        scene.addOverlay(cliente4);
-        cliente4.draw();
-        
-        scene.addOverlay(cliente5);
-        cliente5.draw();
-        
-        scene.addOverlay(clienteCortando);
-        clienteCortando.draw();
-        
-        scene.addOverlay(barbeiro);
-        barbeiro.draw();
-        
-        window.update();
-	}
+    public void imprimeClienteAtendidos(int qtd){
+    	int restante = 12 - qtd;
+    	window.drawText("Clientes Atendidos: " + qtd , 20, 100, Color.RED);
+    	window.drawText("Clientes Aguardando: " + restante , 20, 480, Color.RED);
+    }
     public void update(){
     	window.update();
     }
-
 	public GameImage getCliente1() {
 		return cliente1;
 	}

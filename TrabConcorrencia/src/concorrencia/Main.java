@@ -10,18 +10,18 @@ public class Main {
 
 		Barbeiro barb = new Barbeiro(barbearia);
 
-		Cliente cli1 = new Cliente(barbearia);
-		Cliente cli2 = new Cliente(barbearia);
-		Cliente cli3 = new Cliente(barbearia);
-		Cliente cli4 = new Cliente(barbearia);
-		Cliente cli5 = new Cliente(barbearia);
-		Cliente cli6 = new Cliente(barbearia);
-		Cliente cli7 = new Cliente(barbearia);
-		Cliente cli8 = new Cliente(barbearia);
-		Cliente cli9 = new Cliente(barbearia);
-		Cliente cli10 = new Cliente(barbearia);
-		Cliente cli11 = new Cliente(barbearia);
-		Cliente cli12 = new Cliente(barbearia);
+		Cliente cli1 = new Cliente(barbearia, "[ Cliente 01 ]");
+		Cliente cli2 = new Cliente(barbearia, "[ Cliente 02 ]");
+		Cliente cli3 = new Cliente(barbearia, "[ Cliente 03 ]");
+		Cliente cli4 = new Cliente(barbearia, "[ Cliente 04 ]");
+		Cliente cli5 = new Cliente(barbearia, "[ Cliente 05 ]");
+		Cliente cli6 = new Cliente(barbearia, "[ Cliente 06 ]");
+		Cliente cli7 = new Cliente(barbearia, "[ Cliente 07 ]");
+		Cliente cli8 = new Cliente(barbearia, "[ Cliente 08 ]");
+		Cliente cli9 = new Cliente(barbearia, "[ Cliente 09 ]");
+		Cliente cli10 = new Cliente(barbearia, "[ Cliente 10 ]");
+		Cliente cli11 = new Cliente(barbearia, "[ Cliente 11 ]");
+		Cliente cli12 = new Cliente(barbearia, "[ Cliente 12 ]");
 
 		barb.start();
 		cli1.start();
@@ -39,16 +39,17 @@ public class Main {
 
 		while (true) {
 			int qtd = barbearia.getFilaClientes().size();
-			/*
-			 * if (barbearia.isCortando()) qtd -= 1;
-			 */
-			if (barbearia.isDormindo()){
-				bt.getBarbeiro().loadImage("dormindo.png");
-			}else{
-				bt.getBarbeiro().loadImage("barbeiro.png");
-			}
-				
+			int atendidos = barbearia.getAtendidos();
+			boolean dormindo = barbearia.isDormindo();
 
+			if (dormindo)
+				bt.getBarbeiro().loadImage("dormindo.png");
+			else
+				bt.getBarbeiro().loadImage("barbeiro.png");
+			
+			if(atendidos == 12)
+				bt.getBarbeiro().loadImage("dormindo.png");
+			
 			bt.desenhaCliente(qtd);
 			bt.update();
 		}
